@@ -1,0 +1,36 @@
+
+/// Checks if a list or map has no items. It will also
+/// return true for empty strings or null values.
+/// @access public
+///
+/// @param {number} $list - List to be checked.
+/// @return {bool}
+
+@function is-empty( $value )
+{
+    // Value is empty if it is of type list and its length
+    // is zero. In other words, if the list given has no
+    // items the function will break and return true.
+    @if is-list( $value ) and length( $value ) == 0
+    {
+        @return true;
+    }
+
+    // If the list of type string however, we instead check
+    // the length of the string, and if it equals zero we
+    // we will again break the function and return true.
+    @if is-string( $value ) and str-length( $value ) == 0
+    {
+        @return true;
+    }
+
+    // If neither of the conditions over are true we will
+    // do one last check if the value is of type null or
+    // the value is equal to null, else we return false.
+    @if is-null( $value )
+    {
+        @return true;
+    }
+
+    @return false;
+}
